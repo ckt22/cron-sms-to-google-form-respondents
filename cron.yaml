@@ -1,0 +1,4 @@
+cron:
+- description: "send sms"
+  url: /cron-send-sms
+  schedule: every 5 minutes
