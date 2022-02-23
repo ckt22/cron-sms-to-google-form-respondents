@@ -114,7 +114,7 @@ module.exports = {
             // Get the rows
             const response = await service.spreadsheets.values.get({
                 auth: authClient,
-                spreadsheetId: "1cC37Oa-QP0Vy6CDt0QTi305TmnfZ_TpqabVQ-TaomXw",
+                spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
                 range: "A:O",
             });
 
@@ -189,7 +189,7 @@ module.exports = {
                         console.log(row[3] + 'updating');
                         await service.spreadsheets.values.update({
                             auth: authClient,
-                            spreadsheetId: "1cC37Oa-QP0Vy6CDt0QTi305TmnfZ_TpqabVQ-TaomXw",
+                            spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
                             range: `O${i+2}:V${i+2}`,
                             valueInputOption: 'USER_ENTERED',
                             resource: body
@@ -236,7 +236,7 @@ module.exports = {
 
                             await service.spreadsheets.values.update({
                                 auth: authClient,
-                                spreadsheetId: "1cC37Oa-QP0Vy6CDt0QTi305TmnfZ_TpqabVQ-TaomXw",
+                                spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
                                 range: `N${i+2}`,
                                 valueInputOption: 'USER_ENTERED',
                                 resource: { values: [['true']] }
@@ -244,7 +244,7 @@ module.exports = {
                         } catch (error) {
                             await service.spreadsheets.values.update({
                                 auth: authClient,
-                                spreadsheetId: "1cC37Oa-QP0Vy6CDt0QTi305TmnfZ_TpqabVQ-TaomXw",
+                                spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
                                 range: `N${i+2}`,
                                 valueInputOption: 'USER_ENTERED',
                                 resource: { values: [['error']] }
