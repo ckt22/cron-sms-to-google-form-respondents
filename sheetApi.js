@@ -8,8 +8,8 @@ const moment = require('moment');
 const twilio = require('twilio');
 
 // SMS service
-var accountSid = 'ACf30ba2af7ef19e83254f7b463a7036fb'; // Your Account SID from www.twilio.com/console
-var authToken = '0c2b99a8ce746db3b41526302b95ff50';   // Your Auth Token from www.twilio.com/console
+var accountSid = process.env.TWILIO_ACCOUNT_SID; // Your Account SID from www.twilio.com/console
+var authToken = process.env.TWILIO_AUTH_TOKEN;   // Your Auth Token from www.twilio.com/console
 
 var client = new twilio(accountSid, authToken);
 
@@ -35,7 +35,7 @@ module.exports = {
             // Get the rows
             const response = await service.spreadsheets.values.get({
                 auth: authClient,
-                spreadsheetId: "1cC37Oa-QP0Vy6CDt0QTi305TmnfZ_TpqabVQ-TaomXw",
+                spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
                 range: "A:M",
             });
     
